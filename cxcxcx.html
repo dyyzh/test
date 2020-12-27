@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+  <table border="1" width="50%" id="table">
+    <tr>
+      <th>学号</th>
+      <th>姓名</th>
+      <th>操作</th>
+    </tr>
+    <tbody id="tbd">
+      <tr>
+        <td>xh001</td>
+        <td>王小明</td>
+        <td><a href="javascript:;">删除</a></td>
+        <!--在删除按钮上添加点击事件  -->
+      </tr>
+      <tr>
+        <td>xh002</td>
+        <td>刘小芳</td>
+        <td><a href="javascript:;">删除</a></td>
+        <!--在删除按钮上添加点击事件  -->
+      </tr>
+    </tbody>
+  </table>
+  <input type="button" value="添加一行" id="btn" />
+  <!--在添加按钮上添加点击事件  -->
+
+  <script type="text/javascript">
+
+    $('#btn').on('click', function () {
+      let id = prompt('请输入id：')
+      let uname = prompt('请输入uanme：')
+      let obj = {
+        id: id,
+        uanme: uname
+      }
+      let tr = document.createElement('tr');
+      tr.innerHTML = `<td>${obj.id}</td>
+        <td>${obj.uanme}</td >
+        <td><a href="javascript:;">删除</a></td>`
+      $('#tbd').append(tr)
+    })
+
+    $('#tbd').on('click', 'a', function () {
+      $(this).parents('tr').remove()
+    })
+
+  </script>
+</body>
+
+</html>
+<!-- function add() {
+  var xh = prompt('请输入学号', 'xh003')
+  var name = prompt('请输入姓名', '基尼台梅')
+
+  var table = document.getElementById('table')
+  var ntr = document.createElement('tr')
+  var ntd1 = document.createElement('td')
+  var ntd2 = document.createElement('td')
+  var ntd3 = document.createElement('td')
+  var ntda = document.createElement('a')
+
+  table.appendChild(ntr)
+  ntr.appendChild(ntd1)
+  ntr.appendChild(ntd2)
+  ntr.appendChild(ntd3)
+  ntd3.appendChild(ntda)
+
+  ntd1.innerHTML = xh
+  ntd2.innerHTML = name
+  ntda.innerHTML = '删除'
+  ntda.href = 'javascript:'
+
+  chgColor()
+  del()
+
+}
+
+function del() {
+  var tda = document.getElementsByTagName('a')
+  for (var i = 0; i < tda.length; i++) {
+      tda[i].onclick = function () {
+          this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
+      }
+  }
+} -->
